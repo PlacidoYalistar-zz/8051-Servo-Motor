@@ -1,0 +1,57 @@
+0000: 02 00 16          LJMP  0x0016     
+0013: 02        .DB 0x02
+0014: 00        .DB 0x00
+0015: 21        .DB 0x21
+0016: 75 a0 00          MOV   P2, #0x00
+0019: 75 a8 84          MOV   IE, #0x84
+001c: 75 89 01          MOV   TMOD, #0x01
+001f: 80 fe             SJMP  0x001f    
+0021: 7b        .DB 0x7B
+0022: 1e        .DB 0x1E
+0023: 75        .DB 0x75
+0024: 8a        .DB 0x8A
+0025: 70        .DB 0x70
+0026: 75        .DB 0x75
+0027: 8c        .DB 0x8C
+0028: bc        .DB 0xBC
+0029: 11        .DB 0x11
+002a: 46        .DB 0x46
+002b: 75        .DB 0x75
+002c: 8a        .DB 0x8A
+002d: 80        .DB 0x80
+002e: 75        .DB 0x75
+002f: 8c        .DB 0x8C
+0030: fb        .DB 0xFB
+0031: 11        .DB 0x11
+0032: 46        .DB 0x46
+0033: db        .DB 0xDB
+0034: ee        .DB 0xEE
+0035: 75        .DB 0x75
+0036: 8a        .DB 0x8A
+0037: 25        .DB 0x25
+0038: 75        .DB 0x75
+0039: 8c        .DB 0x8C
+003a: fa        .DB 0xFA
+003b: 11        .DB 0x11
+003c: 46        .DB 0x46
+003d: 75        .DB 0x75
+003e: 8a        .DB 0x8A
+003f: d9        .DB 0xD9
+0040: 75        .DB 0x75
+0041: 8c        .DB 0x8C
+0042: bd        .DB 0xBD
+0043: 11        .DB 0x11
+0044: 46        .DB 0x46
+0045: 32        .DB 0x32
+0046: d2        .DB 0xD2
+0047: 8c        .DB 0x8C
+0048: 30        .DB 0x30
+0049: 8d        .DB 0x8D
+004a: fd        .DB 0xFD
+004b: c2        .DB 0xC2
+004c: 8c        .DB 0x8C
+004d: c2        .DB 0xC2
+004e: 8d        .DB 0x8D
+004f: b2        .DB 0xB2
+0050: a0        .DB 0xA0
+0051: 22        .DB 0x22

@@ -1,0 +1,287 @@
+
+C51ASM V1.0             Copyright (c) 2009 Atmel Corp.            PAGE 1
+
+
+
+
+
+        8051 Macro Assembler   C 5 1 A S M   V 1.0
+        ==========================================
+
+
+
+        Source File:     E:\Electrical Engineering 4\4th Grade\2nd Term\Project uP\8051-Servo-Motor\8051-Servo-Motor\Servo\Servo.asm
+        Object File(s):  E:\Electrical Engineering 4\4th Grade\2nd Term\Project uP\8051-Servo-Motor\8051-Servo-Motor\Servo\Output\Servo.hex E:\Electrical Engineering 4\4th Grade\2nd Term\Project uP\8051-Servo-Motor\8051-Servo-Motor\Servo\Output\Servo.omf
+        List File:       E:\Electrical Engineering 4\4th Grade\2nd Term\Project uP\8051-Servo-Motor\8051-Servo-Motor\Servo\Output\Servo.lst
+
+
+
+ Line    I  Addr Code           Source
+
+    1:   1                      $INCLUDE(.\Servo.h)
+    2:   1                      $INCLUDE (AT89S52.inc)
+    3:   1                      ;*H*************************************
+    4:   1                      ; NAME: at89s52.inc           
+    5:   1                      ;---------------------------------------
+    6:   1                      ; PURPOSE: SFR Description file for AT89
+    7:   1                      ;***************************************
+    8:   1                      
+    9:   1                      $SAVE    
+  166:   1                      $RESTORE
+  167:                          
+  168:           N      0000    	ORG 0000H
+  169:      0000 02 00 16       	LJMP MAIN
+  170:           N      0013    	ORG 0013H
+  171:      0013 02 00 21       	LJMP ISR_IT1
+  172:                          
+  173:                          MAIN:
+  174:      0016 75 A0 00       	MOV P2, #0
+  175:      0019 75 A8 84       	MOV IE, #84H
+  176:      001C 75 89 01       	MOV TMOD, #1
+  177:      001F 80 FE          	SJMP $
+  178:                          
+  179:                          
+  180:                          ISR_IT1:
+  181:      0021 7B 1E          	MOV R3, #30
+  182:                          	BACK1:
+  183:      0023 75 8A 70       		MOV 	TL0, #70H
+  184:      0026 75 8C BC       		MOV 	TH0, #0BCH
+  185:      0029 11 46          		ACALL TIMER_GO
+  186:      002B 75 8A 80       		MOV 	TL0, #80H
+  187:      002E 75 8C FB       		MOV 	TH0, #0FBH
+  188:      0031 11 46          		ACALL TIMER_GO
+  189:      0033 DB EE          		DJNZ R3, BACK1
+  190:                          
+  191:                          
+  192:                          
+  193:      0035 75 8A 25       		MOV 	TL0, #25H
+  194:      0038 75 8C FA       		MOV 	TH0, #0FAH
+  195:      003B 11 46          		ACALL TIMER_GO
+  196:      003D 75 8A D9       		MOV 	TL0, #0D9H
+  197:      0040 75 8C BD       		MOV 	TH0, #0BDH
+  198:      0043 11 46          		ACALL TIMER_GO
+  199:      0045 32             		RETI
+
+C51ASM V1.0             Copyright (c) 2009 Atmel Corp.            PAGE 2
+
+
+
+ Line    I  Addr Code           Source
+
+  200:                          
+  201:                          TIMER_GO:
+  202:      0046 D2 8C          	SETB	TR0
+  203:      0048 30 8D FD       	JNB	TF0, $
+  204:      004B C2 8C          	CLR	TR0
+  205:      004D C2 8D          	CLR	TF0
+  206:      004F B2 A0          	CPL 	P2.0
+  207:      0051 22             	RET
+  208:                          END
+
+C51ASM V1.0             Copyright (c) 2009 Atmel Corp.            PAGE 3
+
+
+
+
+Segment usage:
+   Code      :     66 bytes
+   Data      :      0 bytes
+   Idata     :      0 bytes
+   Edata     :      0 bytes
+   Fdata     :      0 bytes
+   Xdata     :      0 bytes
+   Bit       :      0 bits
+
+   Register banks used: ---
+
+   Warnings: 0
+   Errors:   0
+
+
+C51ASM V1.0             Copyright (c) 2009 Atmel Corp.            PAGE 4
+
+
+
+              L I S T   O F   S Y M B O L S
+              =============================
+
+
+SYMBOL                           TYPE     VALUE     LINE
+--------------------------------------------------------
+??C51ASM                         NUMBER   8051
+??CODE_SIZE                      NUMBER   0000
+??DEVICE                         NUMBER   0000
+??ERAM_SIZE                      NUMBER   0000
+??FDATA_SIZE                     NUMBER   0000
+??RAM_SIZE                       NUMBER   0100
+??VERSION                        NUMBER   0100
+??_AT89C2051_                    NUMBER   0012
+??_AT89C4051_                    NUMBER   0013
+??_AT89C51ED2_                   NUMBER   001D
+??_AT89C51IC2_                   NUMBER   001B
+??_AT89C51ID2_                   NUMBER   001C
+??_AT89C51RB2_                   NUMBER   0018
+??_AT89C51RC2_                   NUMBER   0019
+??_AT89C51RC_                    NUMBER   0017
+??_AT89C51RD2_                   NUMBER   001A
+??_AT89C51_                      NUMBER   0014
+??_AT89C52_                      NUMBER   0015
+??_AT89C55WD_                    NUMBER   0016
+??_AT89LP2052_                   NUMBER   0001
+??_AT89LP213_                    NUMBER   0003
+??_AT89LP214_                    NUMBER   0004
+??_AT89LP216_                    NUMBER   0005
+??_AT89LP4052_                   NUMBER   0002
+??_AT89LP428_                    NUMBER   0006
+??_AT89LP6440_                   NUMBER   0008
+??_AT89LP828_                    NUMBER   0007
+??_AT89LS51_                     NUMBER   0010
+??_AT89LS52_                     NUMBER   0011
+??_AT89S2051_                    NUMBER   0009
+??_AT89S4051_                    NUMBER   000A
+??_AT89S51_                      NUMBER   000B
+??_AT89S52_                      NUMBER   000C
+??_AT89S53_                      NUMBER   000D
+??_AT89S8252_                    NUMBER   000E
+??_AT89S8253_                    NUMBER   000F
+??_DEFAULT_                      NUMBER   0000
+AC                               BIT        D6        72
+ACC                              DATA       E0        81
+AUXR                             DATA       8E        90
+AUXR1                            DATA       A2        91
+B                                DATA       F0        82
+BACK1                            CODE     0023       182
+CP_RL2                           BIT        C8       114
+CY                               BIT        D7        71
+C_T2                             BIT        C9       113
+DP0H                             DATA       83        87
+DP0L                             DATA       82        86
+DP1H                             DATA       85        89
+DP1L                             DATA       84        88
+DPH                              DATA       83        85
+DPL                              DATA       82        84
+EA                               BIT        AF       147
+ES                               BIT        AC       149
+ET0                              BIT        A9       152
+
+C51ASM V1.0             Copyright (c) 2009 Atmel Corp.            PAGE 5
+
+
+
+SYMBOL                           TYPE     VALUE     LINE
+--------------------------------------------------------
+ET1                              BIT        AB       150
+ET2                              BIT        AD       148
+EX0                              BIT        A8       153
+EX1                              BIT        AA       151
+EXEN2                            BIT        CB       111
+EXF2                             BIT        CE       108
+F0                               BIT        D5        73
+FE                               BIT        9F       131
+IE                               DATA       A8       143
+IE0                              BIT        89       101
+IE1                              BIT        8B        99
+INT0                             BIT        B2        64
+INT1                             BIT        B3        63
+IP                               DATA       B8       144
+ISR_IT1                          CODE     0021       180
+IT0                              BIT        88       102
+IT1                              BIT        8A       100
+MAIN                             CODE     0016       173
+OV                               BIT        D2        76
+P                                BIT        D0        78
+P0                               DATA       80        14
+P0_0                             BIT        80        23
+P0_1                             BIT        81        22
+P0_2                             BIT        82        21
+P0_3                             BIT        83        20
+P0_4                             BIT        84        19
+P0_5                             BIT        85        18
+P0_6                             BIT        86        17
+P0_7                             BIT        87        16
+P1                               DATA       90        25
+P1_0                             BIT        90        34
+P1_1                             BIT        91        33
+P1_2                             BIT        92        32
+P1_3                             BIT        93        31
+P1_4                             BIT        94        30
+P1_5                             BIT        95        29
+P1_6                             BIT        96        28
+P1_7                             BIT        97        27
+P2                               DATA       A0        38
+P2_0                             BIT        A0        47
+P2_1                             BIT        A1        46
+P2_2                             BIT        A2        45
+P2_3                             BIT        A3        44
+P2_4                             BIT        A4        43
+P2_5                             BIT        A5        42
+P2_6                             BIT        A6        41
+P2_7                             BIT        A7        40
+P3                               DATA       B0        49
+P3_0                             BIT        B0        58
+P3_1                             BIT        B1        57
+P3_2                             BIT        B2        56
+P3_3                             BIT        B3        55
+P3_4                             BIT        B4        54
+P3_5                             BIT        B5        53
+P3_6                             BIT        B6        52
+P3_7                             BIT        B7        51
+PCON                             DATA       87       164
+PS                               BIT        BC       157
+PSW                              DATA       D0        69
+
+C51ASM V1.0             Copyright (c) 2009 Atmel Corp.            PAGE 6
+
+
+
+SYMBOL                           TYPE     VALUE     LINE
+--------------------------------------------------------
+PT0                              BIT        B9       160
+PT1                              BIT        BB       158
+PT2                              BIT        BD       156
+PX0                              BIT        B8       161
+PX1                              BIT        BA       159
+RB8                              BIT        9A       136
+RCAP2H                           DATA       CB       124
+RCAP2L                           DATA       CA       123
+RCLK                             BIT        CD       109
+RD                               BIT        B7        59
+REN                              BIT        9C       134
+RI                               BIT        98       138
+RS0                              BIT        D3        75
+RS1                              BIT        D4        74
+RXD                              BIT        B0        66
+SBUF                             DATA       99       140
+SCON                             DATA       98       129
+SM0                              BIT        9F       130
+SM1                              BIT        9E       132
+SM2                              BIT        9D       133
+SP                               DATA       81        83
+T0                               BIT        B4        62
+T1                               BIT        B5        61
+T2                               BIT        90        36
+T2CON                            DATA       C8       106
+T2EX                             BIT        91        35
+T2MOD                            DATA       C9       116
+TB8                              BIT        9B       135
+TCLK                             BIT        CC       110
+TCON                             DATA       88        94
+TF0                              BIT        8D        97
+TF1                              BIT        8F        95
+TF2                              BIT        CF       107
+TH0                              DATA       8C       120
+TH1                              DATA       8D       121
+TH2                              DATA       CD       122
+TI                               BIT        99       137
+TIMER_GO                         CODE     0046       201
+TL0                              DATA       8A       117
+TL1                              DATA       8B       118
+TL2                              DATA       CC       119
+TMOD                             DATA       89       104
+TR0                              BIT        8C        98
+TR1                              BIT        8E        96
+TR2                              BIT        CA       112
+TXD                              BIT        B1        65
+UD                               BIT        D1        77
+WDTRST                           DATA       A6       125
+WR                               BIT        B6        60
